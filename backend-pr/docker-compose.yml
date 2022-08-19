@@ -1,0 +1,63 @@
+version: '3.7'
+
+networks:
+  php-network:
+    driver: bridge
+
+volumes:
+  mysql-vl-gallery:
+
+services:
+  main-server:
+    image: nginx:latest
+    restart: unless-stopped
+    container_name: main-server-php-gallery
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx-conf/nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./:/var/www/
+    networks:
+      - php-network
+
+  docker-php-fpm:
+    build: 
+      context: ./
+    restart: unless-stopped
+    container_name: php-interpreter-gallery
+    ports:
+      - 9000:9000
+    volumes:
+      - ./:/var/www/
+    networks:
+      - php-network
+
+  mysql-server:
+    image: mysql:8
+    restart: unless-stopped
+    container_name: mysql-server-gallery
+    ports:
+      - 3306:3306
+    volumes:
+      - mysql-vl-gallery:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=dbase
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=password
+    networks:
+      - php-network
+
+  docker-phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    restart: unless-stopped
+    container_name: phpmyadmin-gallery
+    ports:
+      - "8095:80"
+    environment:
+      - PMA_HOST=mysql-server
+      # - PMA_PORT=3306
+    networks:
+      - php-network
+    depends_on:
+      - mysql-server

@@ -1,0 +1,17 @@
+{
+    "name": "me/composer",
+    "description": "composer project",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Me\\Composer\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "me"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}

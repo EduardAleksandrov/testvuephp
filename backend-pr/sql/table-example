@@ -1,0 +1,20 @@
+CREATE TABLE Pictures
+(
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+    Title VARCHAR(50) NOT NULL,
+    Author VARCHAR(50) NOT NULL,
+    ImgType VARCHAR(50) NOT NULL,
+    ImgDate INT DEFAULT 0,
+    ImgPath VARCHAR(100) NOT NULL
+);
+
+INSERT Pictures(Title, Author, ImgType, ImgDate, ImgPath) 
+VALUES 
+('Портрет неизвестной', 'Ф.В. Боткин', 'Модерн', 1900, '/src/img/one.jpg'),
+('Утро', 'К.Ф. Богаевский', 'Модерн', 1910, '/src/img/two.jpg'),
+('Женский портрет', 'А.Я. Головин', 'Модерн', 1900, '/src/img/three.jpg'),
+('Звездная ночь', 'Винсент ван Гог', 'Постимпрессионизм', 1889, '/src/img/four.jpg'),
+('Стога сена', 'Клод Моне', 'Импрессионизм', 1891, '/src/img/five.jpg'),
+('Сенокос в Эраньи', 'Камиль Писсарро', 'Постимпрессионизм', 1889, '/src/img/six.jpg'),
+('Впечатление', 'Клод Моне', 'Импрессионизм', 1872, '/src/img/seven.jpg'),
+('Вид на канал Сен-Мартен', 'Альфред Сислей', 'Импрессионизм', 1870, '/src/img/eight.jpg');
