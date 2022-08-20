@@ -1,5 +1,6 @@
 <template>
     <div>
+        {{ datas }}
         <nav>
             <router-link to="/">Home</router-link> |
             <router-link to="/one">One</router-link> | 
@@ -21,6 +22,7 @@ export default {
     },
     created() {
         this.fetchPics();
+        this.updatePic()
     },
     computed: {
         ...mapState('pictures', ['pictures']),
@@ -29,7 +31,7 @@ export default {
         }
     },
     methods: {
-        ...mapActions('pictures', ['fetchPics']),
+        ...mapActions('pictures', ['fetchPics','updatePic']),
     }
 }
 </script>
