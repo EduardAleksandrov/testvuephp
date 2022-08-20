@@ -10,15 +10,15 @@ module.exports = defineConfig({
         }
     }
   },
-  configureWebpack: {
-    plugins: [
-        new webpack.ProvidePlugin({
-            Vue: ['vue', 'default'],
-            mapGetters: ['vuex', 'mapGetters'],
-            mapActions: ['vuex', 'mapActions'],
-            mapMutations: ['vuex', 'mapMutations'],
-            mapState: ['vuex', 'mapState'],
-        })
-    ]
-  }
+  // configureWebpack: {
+  //   plugins: [
+  //       new webpack.ProvidePlugin({
+  //           Vue: ['vue', 'default'],
+  //           mapGetters: ['vuex', 'mapGetters'],
+  //           mapActions: ['vuex', 'mapActions'],
+  //           mapMutations: ['vuex', 'mapMutations'],
+  //           mapState: ['vuex', 'mapState'],
+  //       })
+  //   ]
+  // }
 })

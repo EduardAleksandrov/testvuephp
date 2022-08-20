@@ -1,15 +1,20 @@
 <template>
     <div>
-        Hello
+        <MainHeader />
     </div>
 </template>
 
 <script>
+import MainHeader from '@/components/MainHeader';
+
 export default {
-    name: 'home'
+    name: 'home',
+    components: {
+        MainHeader
+    },
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
 </style>

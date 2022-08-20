@@ -1,4 +1,5 @@
 import { createStore } from 'vuex'
+import pictures from './modules/pictures'
 
 export default createStore({
   state: {
@@ -10,5 +11,6 @@ export default createStore({
   actions: {
   },
   modules: {
+    pictures: pictures,
   }
 })

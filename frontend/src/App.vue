@@ -9,6 +9,28 @@
     </div>
 </template>
 
+<script>
+import { mapActions, mapState } from 'vuex';
+
+export default {
+    name: 'app',
+    data() {
+        return {
+
+        }
+    },
+    created() {
+
+    },
+    computed: {
+        ...mapState('pictures', ['example']),
+        datas() {
+            return this.example;
+        }
+    }
+}
+</script>
+
 <style lang="scss">
 #app {
     font-family: Lato, Avenir, Helvetica, Arial, sans-serif;
