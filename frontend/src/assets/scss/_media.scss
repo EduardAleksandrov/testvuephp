@@ -1,0 +1,39 @@
+// breakpoints
+$mobile: 375px;
+$tablet-portrait: 600px;
+$tablet-landscape: 1024px;
+$big-desktop: 1366px;
+$sidebar-bp: 1600px;
+
+$grid-breakpoints: (
+    'xs': $mobile,
+    'sm': $tablet-portrait,
+    'md': $tablet-landscape,
+    'lg': $big-desktop,
+    'sidebar-bp': $sidebar-bp,
+);
+
+$display-breakpoints: (
+    'xss-only': 'only screen and (max-width: #{map-get($grid-breakpoints, 'xs') - 1})',
+    'xs-only': 'only screen and (max-width: #{map-get($grid-breakpoints, 'sm') - 1})',
+    'sm-only': 'only screen and (min-width: #{map-get($grid-breakpoints, 'sm')}) and (max-width: #{map-get($grid-breakpoints, 'md') - 1})',
+    'sm': 'only screen and (min-width: #{map-get($grid-breakpoints, 'sm')})',
+    'md-only': 'only screen and (min-width: #{map-get($grid-breakpoints, 'md')}) and (max-width: #{map-get($grid-breakpoints, 'lg') - 1})',
+    'md': 'only screen and (min-width: #{map-get($grid-breakpoints, 'md')})',
+    'md-max': 'only screen and (max-width: #{map-get($grid-breakpoints, 'md')})',
+    'lg-only': 'only screen and (min-width: #{map-get($grid-breakpoints, 'lg')})',
+    'lg': 'only screen and (min-width: #{map-get($grid-breakpoints, 'lg')})',
+    'lg-max': 'only screen and (max-width: #{map-get($grid-breakpoints, 'lg')})',
+    'sidebar-bp': 'only screen and (min-width: #{map-get($grid-breakpoints, 'sidebar-bp')})',
+    'print': 'only print',
+);
+
+// media queries
+
+@mixin for-size($size) {
+    @media #{map-get($display-breakpoints, $size)} {
+        @content;
+    }
+}
+
+// New mixins/
