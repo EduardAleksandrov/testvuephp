@@ -20,13 +20,16 @@ export default {
         }
     },
     created() {
-
+        this.fetchPics();
     },
     computed: {
-        ...mapState('pictures', ['example']),
+        ...mapState('pictures', ['pictures']),
         datas() {
-            return this.example;
+            return this.pictures;
         }
+    },
+    methods: {
+        ...mapActions('pictures', ['fetchPics']),
     }
 }
 </script>

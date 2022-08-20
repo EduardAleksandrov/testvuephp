@@ -1,7 +1,7 @@
 <template>
     <div class="header">
         <div class="header__wrapper">
-            <div class="header__logo" @click="gotoHome">T</div>
+            <div class="header__logo" @click="togoHome">T</div>
             <div class="header__logo-text">
                 <div class="header__text-logo__up">Моя</div>
                 <div>Третьяковка</div> 
@@ -26,7 +26,7 @@ import { mapActions, mapState } from 'vuex';
 export default {
     name: 'MainHeader',
     methods: {
-        gotoHome() {
+        togoHome() {
             this.$router.push({name: 'home'});
         }
     }
@@ -38,7 +38,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100wh;
+    width: 100vw;
     height: 80px;
     background-color: rgb(54, 54, 54);
 
@@ -70,7 +70,6 @@ export default {
         @include for-size(xs-only) {
             display: none;
         }
-
     }
 
     &__logo {
