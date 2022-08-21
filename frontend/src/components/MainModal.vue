@@ -9,11 +9,11 @@
                 <div class="form__text-title">Название</div>
                 <input name="title" :class="['form__text',{'yellow-border': !titleYBorder}, {'red-border': titleRBorder}]" v-model="title" autocomplete="off" />
                 <div class="form__text-title">Автор</div>
-                <input name="author" class="form__text" v-model="author" autocomplete="off" />
+                <input name="author" :class="['form__text',{'yellow-border': !authorYBorder}, {'red-border': authorRBorder}]" v-model="author" autocomplete="off" />
                 <div class="form__text-title">Тип</div>
-                <input name="imgtype" class="form__text" v-model="imgtype" autocomplete="off" />
+                <input name="imgtype" :class="['form__text',{'yellow-border': !imgtypeYBorder}, {'red-border': imgtypeRBorder}]" v-model="imgtype" autocomplete="off" />
                 <div class="form__text-title">Год</div>
-                <input name="imgdate" class="form__text" v-model="imgdate" autocomplete="off" />
+                <input name="imgdate" :class="['form__text',{'yellow-border': !imgdateYBorder}, {'red-border': imgdateRBorder}]" v-model="imgdate" autocomplete="off" />
 
                 <div style="margin-bottom: 20px;">
                     <button class="form__text-submit" @click="saveChanges">Сохранить</button>
@@ -78,14 +78,32 @@ export default {
     },
     computed: {
         ...mapGetters('pictures', ['initModalData','getPicId']),
+        emptyInputs() {
+            return this.title === '' || this.author === '' || this.imgtype === '' || this.imgdate === '';
+        },
         titleYBorder() {
             return this.initModalData[0].Title === this.title;
         },
         titleRBorder() {
             return this.title === ''
         },
-        emptyInputs() {
-            return this.title === '' || this.author === '' || this.imgtype === '' || this.imgdate === '';
+        authorYBorder() {
+            return this.initModalData[0].Author === this.author;
+        },
+        authorRBorder() {
+            return this.author === ''
+        },
+        imgtypeYBorder() {
+            return this.initModalData[0].ImgType === this.imgtype;
+        },
+        imgtypeRBorder() {
+            return this.imgtype === ''
+        },
+        imgdateYBorder() {
+            return this.initModalData[0].ImgDate === this.imgdate;
+        },
+        imgdateRBorder() {
+            return this.imgdate === ''
         }
     }
 }
@@ -93,14 +111,6 @@ export default {
 
 <style lang="scss" scoped>
 .form {
-    // width: 100%;
-    // height: 100vh;
-    // background-color: rgb(201, 201, 201);
-    // z-index: 1;
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
-
     &__wrapper {
         position: absolute;
         top:50%;

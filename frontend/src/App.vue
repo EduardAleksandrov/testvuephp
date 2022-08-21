@@ -1,11 +1,5 @@
 <template>
     <div>
-        {{ datas }}
-        <nav>
-            <router-link to="/">Home</router-link> |
-            <router-link to="/one">One</router-link> | 
-            <router-link to="/form">Form</router-link>
-        </nav>
         <router-view/>
     </div>
 </template>
@@ -22,16 +16,11 @@ export default {
     },
     created() {
         this.fetchPics();
-        //this.updatePic();
     },
     computed: {
-        ...mapState('pictures', ['pictures']),
-        datas() {
-            return this.pictures;
-        }
     },
     methods: {
-        ...mapActions('pictures', ['fetchPics','updatePic']),
+        ...mapActions('pictures', ['fetchPics']),
     }
 }
 </script>

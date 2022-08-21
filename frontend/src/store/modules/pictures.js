@@ -7,7 +7,7 @@ export default {
             try {
                 const pictures = await axios.get('http://127.0.0.1/pics');
                 commit('getPics', pictures.data);
-                console.log(pictures.data);
+                //console.log(pictures.data);
             } catch (e) {
                 console.log(e.message);
             }
