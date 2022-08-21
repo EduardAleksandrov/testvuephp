@@ -14,7 +14,7 @@
 import { mapActions, mapState } from 'vuex';
 
 export default {
-    name: 'app',
+    name: 'App',
     data() {
         return {
 
@@ -22,7 +22,7 @@ export default {
     },
     created() {
         this.fetchPics();
-        this.updatePic()
+        //this.updatePic();
     },
     computed: {
         ...mapState('pictures', ['pictures']),

@@ -12,10 +12,10 @@ export default {
             let x = 2;
             await axios.patch(`http://127.0.0.1/pics/${x}`,
             {
-                title: "data3",
-                author: "data4",
-                imgType: "data5",
-                imgDate: 1800
+                Title: "data8",
+                Author: "data9",
+                ImgType: "data10",
+                ImgDate: 2500
             },{
                 headers: {
                     'Content-Type': 'json/application'
@@ -28,24 +28,37 @@ export default {
             state.pictures = pics;
         },
         changeFilterAuthor(state, author) {
-            state.filterAutor = author;
+            state.filterAuthor = author;
         },
         changeFilterDirection(state, direction) {
             state.filterDirection = direction;
         },
         changeFilterAdmin(state, admin) {
             state.admin = admin;
+        },
+        setPicId(state, id) {
+            state.id = id;
+        },
+        showModal(state, payload) {
+            state.modal = payload;
         }
     },
     state: {
         pictures: [],
-        filterAutor: 'Все авторы',
+        filterAuthor: 'Все авторы',
         filterDirection: 'Все направления',
         admin: false,
+        id: null,
+        modal: false,
         example: 50,
     },
     getters: {
-
-
+        getFilterDirection: s => id => s.pictures.filter(t => t.ImgType === id),
+        getFilterAuthor: s => id => s.pictures.filter(t => t.Author === id),
+        getFilterAll(state) {
+            let x = state.pictures.filter(t => t.Author === state.filterAuthor);
+            x = x.filter(t => t.ImgType === state.filterDirection);
+            return x;
+        }
     }
 }

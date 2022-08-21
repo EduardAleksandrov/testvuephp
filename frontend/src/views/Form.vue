@@ -5,9 +5,9 @@
                 <h2>
                     Form
                 </h2>
-                <input name="phone" class="form__text-phone" placeholder="Phone number" />
+                <input name="phone" class="form__text-phone" v-model="textarea"/>
                 <input name="date" class="form__text-date" type="date" placeholder="Date" />
-                <textarea name="comment" class="form__text-desc" placeholder="Description" maxlength="200" v-model="textarea"></textarea>
+                <textarea name="comment" class="form__text-desc" placeholder="Description" maxlength="200" ></textarea>
                 {{ textarea }}
                 <div style="margin-bottom: 20px;">
                     <button class="form__text-clear">clear</button>

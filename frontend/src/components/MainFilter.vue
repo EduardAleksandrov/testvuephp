@@ -14,13 +14,14 @@
             <div class="filter__admin-text">{{ adminBox }}</div>
         </div>
         <div class="filter__select-wrapper">
-            <select class="filter__select-css" v-model="filterAutor"> 
-                <option v-for="el in filterOptionsAuthor" :key="el"> {{ el }}</option> 
+            <select class="filter__select-css" v-model="filterAuthor"> 
+                <option v-for="el in filterOptionsAuthor" :key="el">{{ el }}</option> 
             </select>
             <select class="filter__select-css" v-model="filterDirection"> 
-                <option v-for="el in filterOptionsType" :key="el"> {{ el }}</option> 
+                <option v-for="el in filterOptionsType" :key="el">{{ el }}</option> 
             </select>
         </div>
+        <!-- <img :src="`http://127.0.0.1${pictures[0].ImgPath}`" class="img" alt=""> -->
     </div>
 </template>
 
@@ -31,13 +32,13 @@ export default {
     name: 'MainFilter',
     data() {
         return {
-            filterAutor: 'Все авторы',
+            filterAuthor: 'Все авторы',
             filterDirection: 'Все направления',
             filterAdmin: false
         }
     },
     watch: {
-        filterAutor(x) {
+        filterAuthor(x) {
             this.changeFilterAuthor(x);
         },
         filterDirection(x) {
@@ -51,7 +52,7 @@ export default {
         ...mapMutations('pictures', ['changeFilterAuthor', 'changeFilterDirection','changeFilterAdmin']),
     },
     computed: {
-        ...mapState('pictures', ['pictures','admin']),
+        ...mapState('pictures', ['pictures']),
         filterOptionsAuthor() {
             let options = [];
             for(let i = 0; i<this.pictures.length; i++) {
@@ -84,9 +85,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+// .img {
+//     width: 250px;
+//     height: auto;
+// }
 .filter {
     width: 100vw;
-    height: 200px;
+    height: 350px;
 
     &__select-wrapper {
         display: flex;

@@ -12,10 +12,10 @@ function getAllPics($connect) {
 }
 
 function updatePic($connect, $id, $data) {
-    $title = $data['title'];
-    $author = $data['author'];
-    $imgType =  $data['imgType'];
-    $imgDate =  $data['imgDate'];
+    $title = $data['Title'];
+    $author = $data['Author'];
+    $imgType =  $data['ImgType'];
+    $imgDate =  $data['ImgDate'];
 
 
     mysqli_query($connect, "UPDATE `Pictures` SET `Title` = '$title', `Author` = '$author', `ImgType` = '$imgType', `ImgDate` = '$imgDate' WHERE `Pictures`.`Id` = '$id'");
