@@ -4,23 +4,31 @@ export default {
     namespaced: true,
     actions: {
         async fetchPics({commit}) {
-            const pictures = await axios.get('http://127.0.0.1/pics');
-            commit('getPics', pictures.data);
-            console.log(pictures.data);
+            try {
+                const pictures = await axios.get('http://127.0.0.1/pics');
+                commit('getPics', pictures.data);
+                console.log(pictures.data);
+            } catch (e) {
+                console.log(e.message);
+            }
         },
-        async updatePic() {
-            let x = 2;
-            await axios.patch(`http://127.0.0.1/pics/${x}`,
-            {
-                Title: "data8",
-                Author: "data9",
-                ImgType: "data10",
-                ImgDate: 2500
-            },{
-                headers: {
-                    'Content-Type': 'json/application'
-                }
-            });
+        async updatePic({commit, dispatch}, payload) {
+            try {
+                await axios.patch(`http://127.0.0.1/pics/${payload.id}`,
+                {
+                    Title: payload.title,
+                    Author: payload.author,
+                    ImgType: payload.imgtype,
+                    ImgDate: payload.imgdate
+                },{
+                    headers: {
+                        'Content-Type': 'json/application'
+                    }
+                });
+                await dispatch("fetchPics");
+            } catch (e) {
+                console.log(e.message);
+            }
         }
     },
     mutations: {
@@ -44,12 +52,12 @@ export default {
         }
     },
     state: {
-        pictures: [],
-        filterAuthor: 'Все авторы',
-        filterDirection: 'Все направления',
-        admin: false,
-        id: null,
-        modal: false,
+        pictures: [], // основные данные с бека
+        filterAuthor: 'Все авторы', //сортировка
+        filterDirection: 'Все направления', //сортировка
+        admin: false, //показывать шестеренку
+        id: null, //передаем id картинки в модалку
+        modal: false, //показывать модалку
         example: 50,
     },
     getters: {
@@ -59,6 +67,13 @@ export default {
             let x = state.pictures.filter(t => t.Author === state.filterAuthor);
             x = x.filter(t => t.ImgType === state.filterDirection);
             return x;
+        },
+        initModalData(state) {
+            let x = state.pictures.filter(t => t.Id === state.id);
+            return x;
+        },
+        getPicId(state) {
+            return state.id;
         }
     }
 }

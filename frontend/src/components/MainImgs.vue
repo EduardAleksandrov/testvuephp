@@ -23,6 +23,7 @@ export default {
         getPicId(id) {
             this.showModal(true);
             this.setPicId(id);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     },
     computed: {
@@ -58,7 +59,7 @@ export default {
         flex-direction: column;
         width: 400px;
         min-height: 250px;
-        background-color: aquamarine;
+        //background-color: aquamarine;
         margin-right: 40px;
         margin-bottom: 50px;
     }
