@@ -7,6 +7,7 @@
 [![VueRouter Version](https://img.shields.io/badge/Vue-Router-CC2336)](https://router.vuejs.org/)
 [![Vuex Version](https://img.shields.io/badge/Vuex-CC2336)](https://vuex.vuejs.org/)
 [![PHP Version](https://img.shields.io/badge/PHP-8.1-2347cc)](https://www.php.net/)
+[![NGINX Version](https://img.shields.io/badge/NGINX-238c05)](https://www.nginx.com/)
 [![MySQL Version](https://img.shields.io/badge/MySQL-8.0-06639d)](https://www.mysql.com/)
 [![Docker-compose Version](https://img.shields.io/badge/Docker-Compose-237acc)](https://www.docker.com/)
 ---
